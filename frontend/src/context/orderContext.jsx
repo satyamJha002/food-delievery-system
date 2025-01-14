@@ -12,12 +12,15 @@ export const OrderProvider = ({ children }) => {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch("http://localhost:5000/api/order/orders", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        "https://food-delievery-system.onrender.com/api/order/orders",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to fetch orders");
@@ -37,14 +40,17 @@ export const OrderProvider = ({ children }) => {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch("http://localhost:5000/api/order", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ ...orderData, token: token }),
-      });
+      const response = await fetch(
+        "https://food-delievery-system.onrender.com/api/order",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ ...orderData, token: token }),
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();

@@ -12,14 +12,17 @@ export const MenuProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch("http://localhost:5000/api/menu", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ ...menu }),
-      });
+      const response = await fetch(
+        "https://food-delievery-system.onrender.com/api/menu",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ ...menu }),
+        }
+      );
       const data = await response.json();
       if (data.success) {
         setMenu((prevMenu) => [...prevMenu, data.menu]);
@@ -37,12 +40,15 @@ export const MenuProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch("http://localhost:5000/api/menu", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        "https://food-delievery-system.onrender.com/api/menu",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const data = await response.json();
       if (data.success) {
         setMenu(data.menu);
@@ -60,14 +66,17 @@ export const MenuProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`http://localhost:5000/api/menu/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(menu),
-      });
+      const response = await fetch(
+        `https://food-delievery-system.onrender.com/api/menu/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(menu),
+        }
+      );
       const data = await response.json();
       if (data.success) {
         setMenu((prevMenu) =>
@@ -87,10 +96,12 @@ export const MenuProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`http://localhost:5000/api/menu/${id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const response = await fetch(
+        `https://food-delievery-system.onrender.com/api/menu/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
         },
       });
       const data = await response.json();

@@ -11,13 +11,16 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch("http://localhost:5000/api/user/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
+      const response = await fetch(
+        "https://food-delievery-system.onrender.com/api/user/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password }),
+        }
+      );
 
       const data = await response.json();
 
@@ -40,13 +43,16 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch("http://localhost:5000/api/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
+      const response = await fetch(
+        "https://food-delievery-system.onrender.com/api/user/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password }),
+        }
+      );
 
       const data = await response.json();
 
