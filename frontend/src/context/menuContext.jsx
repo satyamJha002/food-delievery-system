@@ -102,8 +102,9 @@ export const MenuProvider = ({ children }) => {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,
-        },
-      });
+          },
+        }
+      );
       const data = await response.json();
       if (data.success) {
         setMenu(menu.filter((item) => item._id !== id));
